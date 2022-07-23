@@ -19,16 +19,15 @@ public class Consultas {
     }
     public static void busqueda(){
         String nomPos;
-        boolean isExist = false;
-        int i = 0;
         System.out.printf(":: Ingresa el nombre del postre: ");
         nomPos = entrada.next();
-        do {
-            if(Registro.listaParticipantes.get(i).postre.getNombrePostre().equals(nomPos))
-                isExist = true;
+        boolean isExist =  false;
+        for(int i = 0; i < Registro.listaParticipantes.size(); i++){
+            if(Registro.listaParticipantes.get(i).postre.getNombrePostre().equals(nomPos)){
                 arregloAR = Registro.listaParticipantes.get(i).postre.getArregloI();
-            i++;
-        } while(!isExist && i < Registro.listaParticipantes.size());
+                isExist = true;
+            }
+        }
         if(isExist){
             System.out.println("::          INGREDIENTES            ::");
             System.out.println(arregloAR[0].getIngrediente());
